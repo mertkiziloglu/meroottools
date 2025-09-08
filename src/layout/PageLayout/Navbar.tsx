@@ -79,6 +79,18 @@ export const Navbar = () => {
             Format
           </Button>
           <Button
+            component="a"
+            href="https://ingdraw.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="subtle"
+            color="black"
+            size="md"
+            radius="md"
+          >
+            IngDraw
+          </Button>
+          <Button
             component={Link}
             prefetch={false}
             href="/converter/json-to-yaml"
