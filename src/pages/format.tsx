@@ -118,8 +118,8 @@ const FormatPage = () => {
                   placeholder="Paste your messy JSON here..."
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  minRows={10}
-                  maxRows={15}
+                  minRows={20}
+                  maxRows={30}
                   styles={{
                     input: {
                       fontFamily: "monospace",
@@ -197,8 +197,8 @@ const FormatPage = () => {
                     <Textarea
                       value={output}
                       readOnly
-                      minRows={10}
-                      maxRows={15}
+                      minRows={20}
+                      maxRows={30}
                       styles={{
                         input: {
                           fontFamily: "monospace",
