@@ -52,7 +52,7 @@ export const PageLinks = () => {
             border: "none",
           }}
         >
-          Open MEROOT Visualizer
+          Open Visualizer
         </Button>
       </Stack>
       <SimpleGrid cols={4} w="fit-content">

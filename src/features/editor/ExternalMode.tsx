@@ -51,29 +51,13 @@ const ExternalMode = () => {
           <Accordion.Item value="3">
             <Accordion.Control>What are the license terms?</Accordion.Control>
             <Accordion.Panel>
-              Read the full license terms on{" "}
-              <Anchor
-                href="https://github.com/mertkiziloglu/jsoncrack.com/blob/main/LICENSE.md"
-                rel="noopener"
-                target="_blank"
-              >
-                GitHub
-              </Anchor>
-              .
+              This project is licensed under the Apache 2.0 License.
             </Accordion.Panel>
           </Accordion.Item>
           <Accordion.Item value="4">
             <Accordion.Control>How do I report a bug or request a feature?</Accordion.Control>
             <Accordion.Panel>
-              You can report bugs or request features by opening an issue on our{" "}
-              <Anchor
-                href="https://github.com/mertkiziloglu/jsoncrack.com/issues"
-                rel="noopener"
-                target="_blank"
-              >
-                GitHub Issues page
-              </Anchor>
-              .
+              Please provide feedback or report issues through the appropriate channels.
               <br />
               <br />
               Please provide as much detail as possible to help us address your feedback quickly.
@@ -82,23 +66,7 @@ const ExternalMode = () => {
           <Accordion.Item value="5">
             <Accordion.Control>How do I contribute to the project?</Accordion.Control>
             <Accordion.Panel>
-              We welcome contributions! Visit our{" "}
-              <Anchor
-                href="https://github.com/mertkiziloglu/jsoncrack.com"
-                rel="noopener"
-                target="_blank"
-              >
-                GitHub repository
-              </Anchor>{" "}
-              and read the{" "}
-              <Anchor
-                href="https://github.com/mertkiziloglu/jsoncrack.com/blob/main/CONTRIBUTING.md"
-                rel="noopener"
-                target="_blank"
-              >
-                contributing guide
-              </Anchor>{" "}
-              to get started.
+              We welcome contributions! Please read the contributing guidelines to get started.
             </Accordion.Panel>
           </Accordion.Item>
           <Accordion.Item value="6">
@@ -112,18 +80,9 @@ const ExternalMode = () => {
         </Accordion>
       </Group>
       <Flex justify="center" align="center" gap="sm" mt="md">
-        <Anchor
-          href="https://github.com/mertkiziloglu/jsoncrack.com"
-          rel="noopener"
-          target="_blank"
-          fz="sm"
-        >
-          GitHub
-        </Anchor>
-        <Text c="dimmed">•</Text>
-        <Anchor href="https://x.com/mertkiziloglu" rel="noopener" target="_blank" fz="sm">
-          Mert Kızıloğlu (@mertkiziloglu)
-        </Anchor>
+        <Text fz="sm" c="dimmed">
+          Mert Kızıloğlu
+        </Text>
       </Flex>
     </Modal>
   );

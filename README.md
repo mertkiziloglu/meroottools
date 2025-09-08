@@ -2,23 +2,19 @@
 
 ### Setup
 
-   ```sh
-   git clone https://github.com/mertkiziloglu/meroottools
-   ```
-
-2. Go to the project folder
+1. Go to the project folder
 
    ```sh
-   cd jsoncrack.com
+   cd merootTools
    ```
 
-3. Install packages
+2. Install packages
 
    ```sh
    pnpm install
    ```
 
-4. Run the project
+3. Run the project
 
    ```sh
    pnpm dev

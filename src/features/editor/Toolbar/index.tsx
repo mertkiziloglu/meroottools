@@ -71,11 +71,6 @@ export const Toolbar = () => {
         >
           Share
         </Button>
-        <Link href="https://github.com/mertkiziloglu/jsoncrack.com" rel="noopener" target="_blank">
-          <StyledToolElement title="GitHub">
-            <FaGithub size="18" />
-          </StyledToolElement>
-        </Link>
         <StyledToolElement title="Fullscreen" onClick={fullscreenBrowser}>
           <AiOutlineFullscreen size="18" />
         </StyledToolElement>

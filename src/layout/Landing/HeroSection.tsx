@@ -106,22 +106,6 @@ export const HeroSection = ({ stars = 0 }) => {
     <StyledHeroSection>
       <StyledHeroSectionBody>
         <Stack flex="1" miw={250} mx="auto" align="center">
-          <Link href="https://github.com/mertkiziloglu/jsoncrack.com" target="_blank" rel="noopener">
-            <Button
-              variant="default"
-              radius="xl"
-              ta="left"
-              leftSection={<FaGithub size="18" />}
-              rightSection={
-                <Flex ml="sm" c="dimmed" align="center" gap="4">
-                  <FaStar />
-                  {stars.toLocaleString("en-US")}
-                </Flex>
-              }
-            >
-              GitHub
-            </Button>
-          </Link>
 
           <StyledHeroTitle>Visualize JSON into interactive graphs</StyledHeroTitle>
           <StyledHeroText>
