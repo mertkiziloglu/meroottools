@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test JSON to Java POJO</title>
+</head>
+<body>
+    <h1>Test JSON to Java POJO Generator</h1>
+    <script>
+        // Test our JSON to POJO generator
+        const testJson = {
+            "name": "John Doe",
+            "age": 30,
+            "email": "john@example.com",
+            "isActive": true,
+            "address": {
+                "street": "123 Main St",
+                "city": "New York",
+                "zipCode": 10001
+            },
+            "hobbies": ["reading", "swimming", "coding"],
+            "scores": [85, 90, 78]
+        };
+
+        console.log("Test JSON:", JSON.stringify(testJson, null, 2));
+        
+        // This would be our expected Java POJO output
+        const expectedJava = `import java.util.List;
+
+public class Address {
+    private String street;
+    private String city;
+    private Integer zipCode;
+
+    public Address() {
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Integer getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(Integer zipCode) {
+        this.zipCode = zipCode;
+    }
+}
+
+public class Root {
+    private String name;
+    private Integer age;
+    private String email;
+    private Boolean isActive;
+    private Address address;
+    private List<String> hobbies;
+    private List<Integer> scores;
+
+    public Root() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<String> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(List<String> hobbies) {
+        this.hobbies = hobbies;
+    }
+
+    public List<Integer> getScores() {
+        return scores;
+    }
+
+    public void setScores(List<Integer> scores) {
+        this.scores = scores;
+    }
+}`;
+
+        console.log("Expected Java POJO:", expectedJava);
+    </script>
+</body>
+</html>
