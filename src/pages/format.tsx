@@ -119,11 +119,13 @@ const FormatPage = () => {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   minRows={20}
-                  maxRows={30}
+                  autosize
                   styles={{
                     input: {
                       fontFamily: "monospace",
                       fontSize: "14px",
+                      maxHeight: "70vh",
+                      overflowY: "auto",
                     },
                   }}
                 />
@@ -198,12 +200,14 @@ const FormatPage = () => {
                       value={output}
                       readOnly
                       minRows={20}
-                      maxRows={30}
+                      autosize
                       styles={{
                         input: {
                           fontFamily: "monospace",
                           fontSize: "14px",
                           backgroundColor: "#f8f9fa",
+                          maxHeight: "70vh",
+                          overflowY: "auto",
                         },
                       }}
                     />
