@@ -2,10 +2,8 @@
 
 ### Setup
 
-1. Clone the repo into a public GitHub repository (or fork https://github.com/AykutSarac/jsoncrack.com/fork). If you plan to distribute the code, read the [`LICENSE`](/LICENSE.md) for additional details.
-
    ```sh
-   git clone https://github.com/AykutSarac/jsoncrack.com.git
+   git clone https://github.com/mertkiziloglu/meroottools
    ```
 
 2. Go to the project folder
@@ -31,7 +29,7 @@
 ### Docker
 
 🐳 A [`Dockerfile`](Dockerfile) is provided in the root of the repository.
-If you want to run JSON Crack locally:
+If you want to run Meroot Tools locally:
 
 ```console
 # Build a Docker image with:

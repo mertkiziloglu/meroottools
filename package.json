@@ -7,9 +7,9 @@
     "email": "mert@example.com"
   },
   "license": "Apache-2.0",
-  "homepage": "https://jsoncrack.com",
+  "homepage": "https://github.com/mertkiziloglu/meroottools",
   "bugs": {
-    "url": "https://github.com/mertkiziloglu/jsoncrack.com/issues"
+    "url": "https://github.com/mertkiziloglu/meroottools/issues"
   },
   "scripts": {
     "dev": "next dev",

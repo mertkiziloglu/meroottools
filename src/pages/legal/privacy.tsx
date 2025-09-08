@@ -10,8 +10,8 @@ const Privacy = () => {
     <Layout>
       <NextSeo
         {...SEO}
-        title="Privacy Policy - JSON Crack"
-        description="JSON Crack Privacy Policy"
+        title="Privacy Policy - Meroot Tools"
+        description="Meroot Tools Privacy Policy"
         canonical="https://jsoncrack.com/legal/privacy"
       />
       <Container my={50} size="md" pb="lg">

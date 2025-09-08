@@ -18,7 +18,7 @@ const ExternalMode = () => {
 
   return (
     <Modal
-      title="Thanks for using JSON Crack"
+      title="Thanks for using Meroot Tools"
       opened={isExternal}
       onClose={() => setExternal(false)}
       centered
@@ -103,10 +103,10 @@ const ExternalMode = () => {
           </Accordion.Item>
           <Accordion.Item value="6">
             <Accordion.Control>
-              About JSON Crack
+              About Meroot Tools
             </Accordion.Control>
             <Accordion.Panel>
-              JSON Crack is a free and open-source tool for visualizing JSON data. It helps you understand complex JSON structures through interactive diagrams.
+              Meroot Tools is a free and open-source tool for visualizing JSON data. It helps you understand complex JSON structures through interactive diagrams.
             </Accordion.Panel>
           </Accordion.Item>
         </Accordion>

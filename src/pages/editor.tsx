@@ -90,8 +90,8 @@ const EditorPage = () => {
     <>
       <NextSeo
         {...SEO}
-        title="Editor | MEROOT Visualizer"
-        description="MEROOT Visualizer Editor is a tool for visualizing into graphs, analyzing, editing, formatting, querying, transforming and validating JSON, CSV, YAML, XML, and more."
+        title="Editor | Meroot Tools"
+        description="Meroot Tools Editor is a tool for visualizing into graphs, analyzing, editing, formatting, querying, transforming and validating JSON, CSV, YAML, XML, and more."
         canonical="https://jsoncrack.com/editor"
       />
       <ThemeProvider theme={darkmodeEnabled ? darkTheme : lightTheme}>

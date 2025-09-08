@@ -2,8 +2,6 @@ import React from "react";
 import Link from "next/link";
 import { Button, Menu, type MenuItemProps, Text, Stack } from "@mantine/core";
 import styled from "styled-components";
-import { LuChevronDown } from "react-icons/lu";
-import { JSONCrackLogo } from "../JsonCrackLogo";
 
 const StyledNavbarWrapper = styled.div`
   z-index: 3;
@@ -64,7 +62,9 @@ export const Navbar = () => {
     <StyledNavbarWrapper className="navbar">
       <StyledNavbar>
         <Left>
-          <JSONCrackLogo fontSize="1.2rem" />
+          <Text component={Link} href="/" fw={600} fz="xl" c="black" td="none">
+            Meroot Tools
+          </Text>
         </Left>
         <Center>
           <Button
