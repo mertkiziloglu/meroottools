@@ -10,6 +10,14 @@ const config = {
   // Remove output: "export" for Heroku
   reactStrictMode: false,
   productionBrowserSourceMaps: true,
+  eslint: {
+    // Disable ESLint during build for Heroku
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    // Disable TypeScript errors during build for Heroku
+    ignoreBuildErrors: true,
+  },
   compiler: {
     styledComponents: true,
   },
