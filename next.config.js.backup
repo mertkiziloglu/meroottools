@@ -7,7 +7,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
  * @type {import('next').NextConfig}
  */
 const config = {
-  // Remove output: "export" for Heroku
+  output: "export",
   reactStrictMode: false,
   productionBrowserSourceMaps: true,
   compiler: {
@@ -28,6 +28,23 @@ const config = {
 
 const configExport = () => {
   if (process.env.ANALYZE === "true") return withBundleAnalyzer(config);
+
+  if (process.env.GITHUB_REPOSITORY === "mertkiziloglu/jsoncrack.com") {
+    return withSentryConfig(
+      config,
+      {
+        silent: true,
+        org: "mert-kiziloglu",
+        project: "json-crack",
+      },
+      {
+        widenClientFileUpload: true,
+        hideSourceMaps: true,
+        disableLogger: true,
+        disableServerWebpackPlugin: true,
+      }
+    );
+  }
 
   return config;
 };
