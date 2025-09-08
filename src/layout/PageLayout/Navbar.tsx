@@ -70,6 +70,17 @@ export const Navbar = () => {
           <Button
             component={Link}
             prefetch={false}
+            href="/format"
+            variant="subtle"
+            color="black"
+            size="md"
+            radius="md"
+          >
+            Format
+          </Button>
+          <Button
+            component={Link}
+            prefetch={false}
             href="/converter/json-to-yaml"
             variant="subtle"
             color="black"
