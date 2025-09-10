@@ -1,7 +1,7 @@
 services:
-  jsoncrack:
-    image: jsoncrack
-    container_name: jsoncrack
+  meroottools:
+    image: meroottools
+    container_name: meroottools
     build: 
       context: .
       dockerfile: Dockerfile

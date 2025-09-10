@@ -80,7 +80,7 @@ export const Navbar = () => {
           </Button>
           <Button
             component="a"
-            href="https://ingdraw.com"
+            href="https://ingdraw"
             target="_blank"
             rel="noopener noreferrer"
             variant="subtle"
@@ -111,6 +111,17 @@ export const Navbar = () => {
             radius="md"
           >
             Generate Types
+          </Button>
+          <Button
+            component={Link}
+            prefetch={false}
+            href="/tools/diff"
+            variant="subtle"
+            color="black"
+            size="md"
+            radius="md"
+          >
+            Diff Tool
           </Button>
         </Center>
         <Right>

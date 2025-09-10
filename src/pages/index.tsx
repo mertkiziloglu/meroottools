@@ -3,6 +3,7 @@ import Link from "next/link";
 import { NextSeo } from "next-seo";
 import { Container, Stack, Title, Text, Button, Group, Card } from "@mantine/core";
 import { FaCode, FaExchangeAlt, FaCogs, FaPaintBrush } from "react-icons/fa";
+import { MdCompareArrows } from "react-icons/md";
 import Layout from "../layout/PageLayout";
 
 const HomePage = () => {
@@ -136,7 +137,7 @@ const HomePage = () => {
                 </div>
                 <Button 
                   component="a" 
-                  href="https://ingdraw.com" 
+                  href="https://ingdraw" 
                   target="_blank"
                   rel="noopener"
                   size="lg" 
@@ -146,6 +147,35 @@ const HomePage = () => {
                   mt="auto"
                 >
                   Open ingDraw
+                </Button>
+              </Stack>
+            </Card>
+
+            <Card 
+              shadow="md" 
+              padding="xl" 
+              radius="md" 
+              withBorder
+              style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+            >
+              <Stack align="center" gap="md" style={{ flex: 1, justifyContent: 'space-between' }}>
+                <div style={{ textAlign: 'center' }}>
+                  <MdCompareArrows size={48} color="#5F3DC4" style={{ marginBottom: '1rem' }} />
+                  <Title order={3} size="1.5rem" mb="sm">Dosya Karşılaştırma</Title>
+                  <Text ta="center" c="dimmed" size="sm">
+                    Metin ve JSON dosyalarını karşılaştırın. Farkları görselleştirin ve analiz edin.
+                  </Text>
+                </div>
+                <Button 
+                  component={Link} 
+                  href="/tools/diff" 
+                  size="lg" 
+                  radius="md"
+                  color="indigo"
+                  fullWidth
+                  mt="auto"
+                >
+                  Diff Aracını Aç
                 </Button>
               </Stack>
             </Card>

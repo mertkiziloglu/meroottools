@@ -1,3 +1,31 @@
+# Meroot Tools
+
+A comprehensive data visualization and comparison tool that supports JSON, YAML, CSV, XML, and text files.
+
+## Features
+
+- **JSON to Graph**: Visualize JSON, YAML, CSV, and XML data as interactive graphs
+- **Format Converter**: Convert between different data formats (JSON, YAML, XML, CSV)
+- **Type Generator**: Generate TypeScript interfaces, Java classes, and other type definitions
+- **File Diff Tool**: Compare text and JSON files with visual highlighting
+- **Data Validation**: Validate JSON, YAML, and other data formats
+
+## New: File Diff Tool
+
+The diff tool allows you to:
+- Compare two text or JSON files side-by-side
+- Visualize differences with color-coded highlighting
+- Switch between unified, side-by-side, and split view modes
+- Automatically detect file types (JSON vs text)
+- Deep analysis of JSON object differences
+- Upload files via drag-and-drop or paste content directly
+
+### Usage
+1. Navigate to `/tools/diff` or click "Diff Tool" in the navigation
+2. Upload files or paste content in the text editors
+3. Choose your preferred view mode (side-by-side, unified, or split)
+4. View the highlighted differences and analysis
+
 ## Development
 
 ### Setup

@@ -12,7 +12,7 @@ import {
 } from "@mantine/core";
 import { FaBolt, FaToolbox } from "react-icons/fa";
 import { IoImages, IoShieldCheckmark } from "react-icons/io5";
-import { MdOutlineFormatIndentIncrease, MdOutlineGeneratingTokens } from "react-icons/md";
+import { MdOutlineFormatIndentIncrease, MdOutlineGeneratingTokens, MdCompareArrows } from "react-icons/md";
 import { TbTransformFilled } from "react-icons/tb";
 import { VscJson } from "react-icons/vsc";
 
@@ -63,6 +63,12 @@ const features: FeatureItem[] = [
     description: "Decode JWT, randomize data, execute jq (JSON Query), json path commands.",
     icon: <FaToolbox size={20} />,
     color: "teal.5",
+  },
+  {
+    title: "File Diff Tool",
+    description: "Compare text and JSON files side-by-side. Visualize differences with highlighting and detailed analysis.",
+    icon: <MdCompareArrows size={20} />,
+    color: "indigo",
   },
   {
     title: "Export Image",
