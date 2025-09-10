@@ -65,8 +65,8 @@ const features: FeatureItem[] = [
     color: "teal.5",
   },
   {
-    title: "File Diff Tool",
-    description: "Compare text and JSON files side-by-side. Visualize differences with highlighting and detailed analysis.",
+    title: "Dosya Karşılaştırma Aracı",
+    description: "Metin ve JSON dosyalarını yan yana karşılaştırın. Farkları vurgulama ve detaylı analiz ile görselleştirin.",
     icon: <MdCompareArrows size={20} />,
     color: "indigo",
   },

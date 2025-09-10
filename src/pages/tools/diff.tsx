@@ -9,9 +9,9 @@ const DiffPage = () => {
     <Layout>
       <NextSeo
         {...SEO}
-        title="Dosya Karşılaştırma Aracı | Meroot Tools"
+        title="File Diff Tool | Meroot Tools"
         canonical="https://jsoncrack.com/tools/diff"
-        description="Metin ve JSON dosyalarını karşılaştırın. İki farklı dosya arasındaki farkları görselleştirin ve analiz edin."
+        description="Compare text and JSON files. Visualize and analyze differences between two different files."
       />
       <DiffTool />
     </Layout>

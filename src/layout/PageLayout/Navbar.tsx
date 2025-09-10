@@ -121,7 +121,7 @@ export const Navbar = () => {
             size="md"
             radius="md"
           >
-            Diff Tool
+            Karşılaştırma
           </Button>
         </Center>
         <Right>

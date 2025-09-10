@@ -29,8 +29,8 @@ type FileType = 'json' | 'text';
 export const DiffTool = () => {
   const [leftContent, setLeftContent] = useState("");
   const [rightContent, setRightContent] = useState("");
-  const [leftFileName, setLeftFileName] = useState("Dosya 1");
-  const [rightFileName, setRightFileName] = useState("Dosya 2");
+  const [leftFileName, setLeftFileName] = useState("File 1");
+  const [rightFileName, setRightFileName] = useState("File 2");
   const [comparisonMode, setComparisonMode] = useState<ComparisonMode>('side-by-side');
   const [fileType, setFileType] = useState<FileType>('text');
   const [autoDetectType, setAutoDetectType] = useState(true);
@@ -83,8 +83,8 @@ export const DiffTool = () => {
   const clearAll = () => {
     setLeftContent("");
     setRightContent("");
-    setLeftFileName("Dosya 1");
-    setRightFileName("Dosya 2");
+    setLeftFileName("File 1");
+    setRightFileName("File 2");
   };
 
   return (
@@ -93,10 +93,10 @@ export const DiffTool = () => {
         {/* Header */}
         <Box>
           <Title order={1} c="black" mb="sm">
-            Dosya Karşılaştırma Aracı
+            File Comparison Tool
           </Title>
           <Text c="dimmed" size="lg">
-            İki farklı metin veya JSON dosyasını karşılaştırın ve aralarındaki farkları görselleştirin.
+            Compare two different text or JSON files and visualize the differences between them.
           </Text>
         </Box>
 
@@ -105,29 +105,29 @@ export const DiffTool = () => {
           <Group justify="space-between">
             <Group>
               <Select
-                label="Dosya Türü"
+                label="File Type"
                 value={fileType}
                 onChange={(value) => setFileType(value as FileType)}
                 data={[
-                  { value: 'text', label: 'Metin' },
+                  { value: 'text', label: 'Text' },
                   { value: 'json', label: 'JSON' }
                 ]}
                 disabled={autoDetectType}
               />
               <Select
-                label="Görünüm Modu"
+                label="View Mode"
                 value={comparisonMode}
                 onChange={(value) => setComparisonMode(value as ComparisonMode)}
                 data={[
-                  { value: 'side-by-side', label: 'Yan Yana' },
-                  { value: 'unified', label: 'Birleşik' },
-                  { value: 'split', label: 'Bölünmüş' }
+                  { value: 'side-by-side', label: 'Side by Side' },
+                  { value: 'unified', label: 'Unified' },
+                  { value: 'split', label: 'Split' }
                 ]}
               />
             </Group>
             <Group>
               <Button variant="outline" onClick={clearAll}>
-                Temizle
+                Clear All
               </Button>
             </Group>
           </Group>
@@ -137,10 +137,10 @@ export const DiffTool = () => {
         <Tabs defaultValue="upload">
           <Tabs.List>
             <Tabs.Tab value="upload" leftSection={<LuUpload size={16} />}>
-              Dosya Yükle
+              Upload Files
             </Tabs.Tab>
             <Tabs.Tab value="text" leftSection={<LuFileText size={16} />}>
-              Metin Gir
+              Enter Text
             </Tabs.Tab>
           </Tabs.List>
 
@@ -165,10 +165,10 @@ export const DiffTool = () => {
                     </Dropzone.Idle>
                     <div>
                       <Text size="xl" inline>
-                        Sol dosyayı buraya sürükleyin
+                        Drag left file here
                       </Text>
                       <Text size="sm" c="dimmed" inline mt={7}>
-                        Metin veya JSON dosyası seçin
+                        Select text or JSON file
                       </Text>
                     </div>
                   </Group>
@@ -194,10 +194,10 @@ export const DiffTool = () => {
                     </Dropzone.Idle>
                     <div>
                       <Text size="xl" inline>
-                        Sağ dosyayı buraya sürükleyin
+                        Drag right file here
                       </Text>
                       <Text size="sm" c="dimmed" inline mt={7}>
-                        Metin veya JSON dosyası seçin
+                        Select text or JSON file
                       </Text>
                     </div>
                   </Group>
@@ -251,28 +251,28 @@ export const DiffTool = () => {
         {diffResult && (
           <Paper p="md" withBorder>
             <Group justify="space-between" mb="md">
-              <Title order={3}>Karşılaştırma Sonucu</Title>
+              <Title order={3}>Comparison Result</Title>
               <Group>
                 {diffResult.addedLines > 0 && (
                   <Badge color="green" variant="light">
-                    +{diffResult.addedLines} eklenen
+                    +{diffResult.addedLines} added
                   </Badge>
                 )}
                 {diffResult.removedLines > 0 && (
                   <Badge color="red" variant="light">
-                    -{diffResult.removedLines} silinen
+                    -{diffResult.removedLines} removed
                   </Badge>
                 )}
                 {!diffResult.hasChanges && (
                   <Badge color="blue" variant="light">
-                    Dosyalar aynı
+                    Files are identical
                   </Badge>
                 )}
               </Group>
             </Group>
 
             {jsonDifferences.length > 0 && (
-              <Alert icon={<LuInfo size={16} />} title="JSON Farkları" mb="md">
+              <Alert icon={<LuInfo size={16} />} title="JSON Differences" mb="md">
                 <Stack gap="xs">
                   {jsonDifferences.slice(0, 10).map((diff, index) => (
                     <Text key={index} size="sm" c="dimmed">
@@ -281,7 +281,7 @@ export const DiffTool = () => {
                   ))}
                   {jsonDifferences.length > 10 && (
                     <Text size="sm" c="dimmed" fs="italic">
-                      ... ve {jsonDifferences.length - 10} fark daha
+                      ... and {jsonDifferences.length - 10} more differences
                     </Text>
                   )}
                 </Stack>

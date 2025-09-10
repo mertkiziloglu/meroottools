@@ -161,9 +161,9 @@ const HomePage = () => {
               <Stack align="center" gap="md" style={{ flex: 1, justifyContent: 'space-between' }}>
                 <div style={{ textAlign: 'center' }}>
                   <MdCompareArrows size={48} color="#5F3DC4" style={{ marginBottom: '1rem' }} />
-                  <Title order={3} size="1.5rem" mb="sm">Dosya Karşılaştırma</Title>
+                  <Title order={3} size="1.5rem" mb="sm">File Comparison</Title>
                   <Text ta="center" c="dimmed" size="sm">
-                    Metin ve JSON dosyalarını karşılaştırın. Farkları görselleştirin ve analiz edin.
+                    Compare text and JSON files. Visualize and analyze differences between files.
                   </Text>
                 </div>
                 <Button 
@@ -175,10 +175,11 @@ const HomePage = () => {
                   fullWidth
                   mt="auto"
                 >
-                  Diff Aracını Aç
+                  Open Diff Tool
                 </Button>
               </Stack>
             </Card>
+
           </div>
         </Stack>
       </Container>
