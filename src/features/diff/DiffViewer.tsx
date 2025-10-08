@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Text, Flex, Paper, ScrollArea, Code } from "@mantine/core";
-import { DiffResult, DiffLine } from "./utils/diffUtils";
+import { DiffResult, DiffLine, CharDiff } from "./utils/diffUtils";
 import styled from "styled-components";
 
 interface DiffViewerProps {
@@ -75,12 +75,43 @@ const DiffPrefix = styled.span<{ type: DiffLine['type'] }>`
     switch (props.type) {
       case 'added': return '#28a745';
       case 'removed': return '#dc3545';
+      case 'modified': return '#ffc107';
       default: return 'transparent';
     }
   }};
   font-weight: bold;
   flex-shrink: 0;
 `;
+
+const CharSpan = styled.span<{ type: CharDiff['type'] }>`
+  background-color: ${props => {
+    switch (props.type) {
+      case 'added': return '#acf2bd';
+      case 'removed': return '#fdb8c0';
+      case 'unchanged': return 'transparent';
+      default: return 'transparent';
+    }
+  }};
+  
+  ${props => props.type !== 'unchanged' && `
+    padding: 1px 2px;
+    border-radius: 2px;
+    font-weight: 500;
+  `}
+`;
+
+// Component to render character-level diffs
+const CharacterDiffContent: React.FC<{ charDiffs: CharDiff[] }> = ({ charDiffs }) => {
+  return (
+    <>
+      {charDiffs.map((charDiff, index) => (
+        <CharSpan key={index} type={charDiff.type}>
+          {charDiff.text}
+        </CharSpan>
+      ))}
+    </>
+  );
+};
 
 export const DiffViewer: React.FC<DiffViewerProps> = ({
   diffResult,
@@ -101,12 +132,18 @@ export const DiffViewer: React.FC<DiffViewerProps> = ({
             {diffResult.lines.map((line, index) => (
               <DiffLineContainer key={index} type={line.type}>
                 <DiffPrefix type={line.type}>
-                  {line.type === 'added' ? '+' : line.type === 'removed' ? '-' : ' '}
+                  {line.type === 'added' ? '+' : line.type === 'removed' ? '-' : line.type === 'modified' ? '~' : ' '}
                 </DiffPrefix>
                 <LineNumber>
                   {line.type === 'added' ? line.lineNumber : line.originalLineNumber}
                 </LineNumber>
-                <LineContent>{line.content}</LineContent>
+                <LineContent>
+                  {line.charDiffs ? (
+                    <CharacterDiffContent charDiffs={line.charDiffs} />
+                  ) : (
+                    line.content
+                  )}
+                </LineContent>
               </DiffLineContainer>
             ))}
           </Box>
@@ -178,7 +215,13 @@ export const DiffViewer: React.FC<DiffViewerProps> = ({
                   type={group.left?.type || 'unchanged'}
                 >
                   <LineNumber>{group.left?.originalLineNumber || ''}</LineNumber>
-                  <LineContent>{group.left?.content || ''}</LineContent>
+                  <LineContent>
+                    {group.left?.charDiffs ? (
+                      <CharacterDiffContent charDiffs={group.left.charDiffs} />
+                    ) : (
+                      group.left?.content || ''
+                    )}
+                  </LineContent>
                 </DiffLineContainer>
               ))}
             </Box>
@@ -197,7 +240,13 @@ export const DiffViewer: React.FC<DiffViewerProps> = ({
                   type={group.right?.type || 'unchanged'}
                 >
                   <LineNumber>{group.right?.lineNumber || ''}</LineNumber>
-                  <LineContent>{group.right?.content || ''}</LineContent>
+                  <LineContent>
+                    {group.right?.charDiffs ? (
+                      <CharacterDiffContent charDiffs={group.right.charDiffs} />
+                    ) : (
+                      group.right?.content || ''
+                    )}
+                  </LineContent>
                 </DiffLineContainer>
               ))}
             </Box>
@@ -227,12 +276,18 @@ export const DiffViewer: React.FC<DiffViewerProps> = ({
             changedLines.map((line, index) => (
               <DiffLineContainer key={index} type={line.type}>
                 <DiffPrefix type={line.type}>
-                  {line.type === 'added' ? '+' : line.type === 'removed' ? '-' : ' '}
+                  {line.type === 'added' ? '+' : line.type === 'removed' ? '-' : line.type === 'modified' ? '~' : ' '}
                 </DiffPrefix>
                 <LineNumber>
                   {line.type === 'added' ? line.lineNumber : line.originalLineNumber}
                 </LineNumber>
-                <LineContent>{line.content}</LineContent>
+                <LineContent>
+                  {line.charDiffs ? (
+                    <CharacterDiffContent charDiffs={line.charDiffs} />
+                  ) : (
+                    line.content
+                  )}
+                </LineContent>
               </DiffLineContainer>
             ))
           )}

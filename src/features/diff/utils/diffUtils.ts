@@ -1,8 +1,14 @@
+export interface CharDiff {
+  type: 'added' | 'removed' | 'unchanged';
+  text: string;
+}
+
 export interface DiffLine {
   type: 'added' | 'removed' | 'unchanged' | 'modified';
   content: string;
   lineNumber?: number;
   originalLineNumber?: number;
+  charDiffs?: CharDiff[];
 }
 
 export interface DiffResult {
@@ -11,6 +17,48 @@ export interface DiffResult {
   addedLines: number;
   removedLines: number;
   modifiedLines: number;
+}
+
+/**
+ * Character-level diff algorithm using dynamic programming
+ */
+export function getCharacterDiff(str1: string, str2: string): CharDiff[] {
+  const m = str1.length;
+  const n = str2.length;
+  
+  // Create a DP table to store the length of LCS
+  const dp: number[][] = Array(m + 1).fill(null).map(() => Array(n + 1).fill(0));
+  
+  // Fill the DP table
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      if (str1[i - 1] === str2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+  
+  // Backtrack to find the actual diff
+  const result: CharDiff[] = [];
+  let i = m, j = n;
+  
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0 && str1[i - 1] === str2[j - 1]) {
+      result.unshift({ type: 'unchanged', text: str1[i - 1] });
+      i--;
+      j--;
+    } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+      result.unshift({ type: 'added', text: str2[j - 1] });
+      j--;
+    } else if (i > 0) {
+      result.unshift({ type: 'removed', text: str1[i - 1] });
+      i--;
+    }
+  }
+  
+  return result;
 }
 
 /**
@@ -56,16 +104,14 @@ export function diffText(original: string, modified: string): DiffResult {
         originalLineNumber: i + 1
       });
     } else {
-      // Line modified
+      // Line modified - add character-level diff
+      const charDiffs = getCharacterDiff(originalLine, modifiedLine);
       lines.push({
-        type: 'removed',
+        type: 'modified',
         content: originalLine,
-        originalLineNumber: i + 1
-      });
-      lines.push({
-        type: 'added',
-        content: modifiedLine,
-        lineNumber: i + 1
+        originalLineNumber: i + 1,
+        lineNumber: i + 1,
+        charDiffs: charDiffs
       });
       modifiedLinesCount++;
     }

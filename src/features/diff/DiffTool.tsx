@@ -268,6 +268,11 @@ export const DiffTool = () => {
                     Files are identical
                   </Badge>
                 )}
+                {diffResult.modifiedLines > 0 && (
+                  <Badge color="orange" variant="light">
+                    {diffResult.modifiedLines} modified with character-level highlighting
+                  </Badge>
+                )}
               </Group>
             </Group>
 

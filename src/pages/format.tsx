@@ -38,21 +38,72 @@ const FormatPage = () => {
         throw new Error("Invalid XML format");
       }
 
-      const serializer = new XMLSerializer();
-      const formatted = serializer.serializeToString(xmlDoc);
+      // Better XML formatting function
+      const formatXMLNode = (node: Node, indent: number = 0): string => {
+        const indentStr = '  '.repeat(indent);
+        
+        if (node.nodeType === Node.TEXT_NODE) {
+          const text = node.textContent?.trim();
+          return text ? text : '';
+        }
+        
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          const element = node as Element;
+          const tagName = element.tagName;
+          const attributes = Array.from(element.attributes)
+            .map(attr => ` ${attr.name}="${attr.value}"`)
+            .join('');
+          
+          const children = Array.from(element.childNodes);
+          
+          // Check if element has only text content
+          const hasOnlyText = children.length === 1 && 
+            children[0].nodeType === Node.TEXT_NODE && 
+            children[0].textContent?.trim();
+          
+          if (hasOnlyText) {
+            return `${indentStr}<${tagName}${attributes}>${children[0].textContent?.trim()}</${tagName}>`;
+          }
+          
+          // Handle elements with child elements
+          if (children.length === 0) {
+            return `${indentStr}<${tagName}${attributes}/>`;
+          }
+          
+          const formattedChildren = children
+            .map(child => formatXMLNode(child, indent + 1))
+            .filter(child => child.trim().length > 0)
+            .join('\n');
+          
+          if (formattedChildren) {
+            return `${indentStr}<${tagName}${attributes}>\n${formattedChildren}\n${indentStr}</${tagName}>`;
+          } else {
+            return `${indentStr}<${tagName}${attributes}></${tagName}>`;
+          }
+        }
+        
+        return '';
+      };
+
+      // Format the document
+      let result = '';
       
-      // Simple indentation for XML
-      const indentedXML = formatted
-        .replace(/></g, '>\n<')
-        .split('\n')
-        .map((line, index) => {
-          const depth = (line.match(/</g) || []).length - (line.match(/\//g) || []).length;
-          const indent = '  '.repeat(Math.max(0, depth - 1));
-          return indent + line.trim();
-        })
-        .join('\n');
+      // Add XML declaration if it exists
+      if (xmlString.trim().startsWith('<?xml')) {
+        const declarationMatch = xmlString.match(/<\?xml[^>]*\?>/);
+        if (declarationMatch) {
+          result += declarationMatch[0] + '\n';
+        }
+      }
       
-      return indentedXML;
+      // Format each root element
+      Array.from(xmlDoc.childNodes).forEach(node => {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          result += formatXMLNode(node, 0);
+        }
+      });
+      
+      return result;
     } catch (err) {
       throw new Error("Invalid XML format. Please check your input.");
     }
@@ -96,8 +147,25 @@ const FormatPage = () => {
         setOutput(minified);
         toast.success("JSON minified successfully!");
       } else if (selectedFormat === "xml") {
-        // For XML, remove extra whitespace and newlines
-        const minified = input.replace(/>\s+</g, '><').replace(/\s+/g, ' ').trim();
+        // Parse and minify XML properly
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(input, "application/xml");
+        
+        // Check for parsing errors
+        const parserError = xmlDoc.querySelector("parsererror");
+        if (parserError) {
+          throw new Error("Invalid XML format");
+        }
+        
+        const serializer = new XMLSerializer();
+        let minified = serializer.serializeToString(xmlDoc);
+        
+        // Remove extra whitespace between elements
+        minified = minified
+          .replace(/>\s+</g, '><')
+          .replace(/\s+/g, ' ')
+          .trim();
+        
         setOutput(minified);
         toast.success("XML minified successfully!");
       }
