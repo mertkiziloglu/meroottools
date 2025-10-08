@@ -1,7 +1,7 @@
 import React from "react";
 
 const ExternalMode = () => {
-  // Modal completely disabled for Meroot Tools
+  // Modal completely disabled for Tools
   return null;
 };
 

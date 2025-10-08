@@ -10,7 +10,7 @@ export const generateType = async (input: string, format: FileFormat, output: Ty
     if (output === TypeLanguage.Java) {
       return generateJavaPojo(jsonString, "Root");
     } else {
-      // Fallback için eski sistem
+      // Fallback to legacy system
       const { run } = await import("json_typegen_wasm");
       return run("Root", jsonString, JSON.stringify({ output_mode: output }));
     }

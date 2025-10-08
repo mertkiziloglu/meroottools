@@ -52,7 +52,7 @@ export const PageLinks = () => {
             border: "none",
           }}
         >
-          Open Visualizer
+          Open Data Visualizer
         </Button>
       </Stack>
       <SimpleGrid cols={4} w="fit-content">

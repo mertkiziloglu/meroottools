@@ -40,8 +40,8 @@ const Docs = () => {
     <Layout>
       <NextSeo
         {...SEO}
-        title="Documentation - Meroot Tools"
-        description="Integrate Meroot Tools widgets into your website."
+        title="Documentation - Tools"
+        description="Integrate Tools widgets into your website."
         canonical="https://jsoncrack.com/docs"
       />
       <Stack mx="auto" maw="90%">
@@ -75,7 +75,7 @@ const Docs = () => {
               loading="eager"
             >
               See the Pen <a href="https://codepen.io/mertkiziloglu/pen/KKBpWVR">Untitled</a> by Mert
-              Kızıloğlu (<a href="https://codepen.io/mertkiziloglu">@mertkiziloglu</a>) on{" "}
+              Kiziloglu (<a href="https://codepen.io/mertkiziloglu">@mertkiziloglu</a>) on{" "}
               <a href="https://codepen.io">CodePen</a>.
             </StyledFrame>
           </StyledContentBody>
@@ -114,7 +114,7 @@ const Docs = () => {
               loading="lazy"
             >
               See the Pen <a href="https://codepen.io/mertkiziloglu/pen/rNrVyWP">Untitled</a> by Mert
-              Kızıloğlu (<a href="https://codepen.io/mertkiziloglu">@mertkiziloglu</a>) on{" "}
+              Kiziloglu (<a href="https://codepen.io/mertkiziloglu">@mertkiziloglu</a>) on{" "}
               <a href="https://codepen.io">CodePen</a>.
             </StyledFrame>
           </StyledContentBody>
@@ -138,7 +138,7 @@ const Docs = () => {
               loading="lazy"
             >
               See the Pen <a href="https://codepen.io/mertkiziloglu/pen/QWBbpqx">Untitled</a> by Mert
-              Kızıloğlu (<a href="https://codepen.io/mertkiziloglu">@mertkiziloglu</a>) on{" "}
+              Kiziloglu (<a href="https://codepen.io/mertkiziloglu">@mertkiziloglu</a>) on{" "}
               <a href="https://codepen.io">CodePen</a>.
             </StyledFrame>
           </StyledContentBody>

@@ -43,7 +43,7 @@ export const PageLinks = () => {
             border: "none",
           }}
         >
-          Open Meroot Tools
+          Open Data Visualizer
         </Button>
       </Stack>
       <SimpleGrid cols={4} w="fit-content">

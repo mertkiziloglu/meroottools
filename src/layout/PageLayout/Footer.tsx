@@ -6,7 +6,7 @@ export const Footer = () => {
     <Container w="100%" py="md" fluid>
       <Flex justify="center" align="center">
         <Text fz="md" c="gray.6" fw={500}>
-          Meroot Tools
+          Tools
         </Text>
       </Flex>
     </Container>

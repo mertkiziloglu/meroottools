@@ -10,7 +10,7 @@ const HomePage = () => {
   return (
     <Layout>
       <NextSeo 
-        title="MEROOT Visualizer - Data Visualization Tool"
+        title="Tools - Data Visualization Tool"
         description="Transform your JSON, YAML, CSV, and XML data into interactive visualizations. Convert between formats and generate types."
         canonical="https://jsoncrack.com" 
       />
@@ -20,7 +20,7 @@ const HomePage = () => {
           {/* Hero Section */}
           <Stack align="center" gap="md" ta="center">
             <Text size="lg" c="dimmed" maw={600}>
-              İstek ve hatalar için mert.kiziloglu@ing.com.tr hesabına ulaşabilirsiniz.
+              For requests and bug reports, you can contact mert.kiziloglu@ing.com.tr.
             </Text>
           </Stack>
 
@@ -43,7 +43,7 @@ const HomePage = () => {
               <Stack align="center" gap="md" style={{ flex: 1, justifyContent: 'space-between' }}>
                 <div style={{ textAlign: 'center' }}>
                   <FaCode size={48} color="#228BE6" style={{ marginBottom: '1rem' }} />
-                  <Title order={3} size="1.5rem" mb="sm">JSON to Graph</Title>
+                  <Title order={3} size="1.5rem" mb="sm">Data Visualizer</Title>
                   <Text ta="center" c="dimmed" size="sm">
                     Visualize and edit your JSON, YAML, CSV, and XML data with our interactive editor.
                   </Text>
@@ -57,7 +57,7 @@ const HomePage = () => {
                   fullWidth
                   mt="auto"
                 >
-                  Open JSON to Graph
+                  Open Data Visualizer
                 </Button>
               </Stack>
             </Card>

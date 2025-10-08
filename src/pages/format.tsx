@@ -13,6 +13,8 @@ import {
   Divider,
   ActionIcon,
   Tooltip,
+  Select,
+  Tabs,
 } from "@mantine/core";
 import { FaCopy, FaDownload, FaTrash } from "react-icons/fa";
 import toast from "react-hot-toast";
@@ -23,39 +25,84 @@ const FormatPage = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
+  const [selectedFormat, setSelectedFormat] = useState("json");
 
-  const formatJSON = () => {
+  const formatXML = (xmlString: string) => {
+    try {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlString, "application/xml");
+      
+      // Check for parsing errors
+      const parserError = xmlDoc.querySelector("parsererror");
+      if (parserError) {
+        throw new Error("Invalid XML format");
+      }
+
+      const serializer = new XMLSerializer();
+      const formatted = serializer.serializeToString(xmlDoc);
+      
+      // Simple indentation for XML
+      const indentedXML = formatted
+        .replace(/></g, '>\n<')
+        .split('\n')
+        .map((line, index) => {
+          const depth = (line.match(/</g) || []).length - (line.match(/\//g) || []).length;
+          const indent = '  '.repeat(Math.max(0, depth - 1));
+          return indent + line.trim();
+        })
+        .join('\n');
+      
+      return indentedXML;
+    } catch (err) {
+      throw new Error("Invalid XML format. Please check your input.");
+    }
+  };
+
+  const formatData = () => {
     try {
       setError("");
       if (!input.trim()) {
-        setError("Please enter JSON data to format");
+        setError(`Please enter ${selectedFormat.toUpperCase()} data to format`);
         return;
       }
 
-      const parsed = JSON.parse(input);
-      const formatted = JSON.stringify(parsed, null, 2);
-      setOutput(formatted);
-      toast.success("JSON formatted successfully!");
+      if (selectedFormat === "json") {
+        const parsed = JSON.parse(input);
+        const formatted = JSON.stringify(parsed, null, 2);
+        setOutput(formatted);
+        toast.success("JSON formatted successfully!");
+      } else if (selectedFormat === "xml") {
+        const formatted = formatXML(input);
+        setOutput(formatted);
+        toast.success("XML formatted successfully!");
+      }
     } catch (err) {
-      setError("Invalid JSON format. Please check your input.");
+      setError(`Invalid ${selectedFormat.toUpperCase()} format. Please check your input.`);
       setOutput("");
     }
   };
 
-  const minifyJSON = () => {
+  const minifyData = () => {
     try {
       setError("");
       if (!input.trim()) {
-        setError("Please enter JSON data to minify");
+        setError(`Please enter ${selectedFormat.toUpperCase()} data to minify`);
         return;
       }
 
-      const parsed = JSON.parse(input);
-      const minified = JSON.stringify(parsed);
-      setOutput(minified);
-      toast.success("JSON minified successfully!");
+      if (selectedFormat === "json") {
+        const parsed = JSON.parse(input);
+        const minified = JSON.stringify(parsed);
+        setOutput(minified);
+        toast.success("JSON minified successfully!");
+      } else if (selectedFormat === "xml") {
+        // For XML, remove extra whitespace and newlines
+        const minified = input.replace(/>\s+</g, '><').replace(/\s+/g, ' ').trim();
+        setOutput(minified);
+        toast.success("XML minified successfully!");
+      }
     } catch (err) {
-      setError("Invalid JSON format. Please check your input.");
+      setError(`Invalid ${selectedFormat.toUpperCase()} format. Please check your input.`);
       setOutput("");
     }
   };
@@ -67,18 +114,20 @@ const FormatPage = () => {
     }
   };
 
-  const downloadJSON = () => {
+  const downloadFile = () => {
     if (output) {
-      const blob = new Blob([output], { type: "application/json" });
+      const mimeType = selectedFormat === "json" ? "application/json" : "application/xml";
+      const extension = selectedFormat === "json" ? "json" : "xml";
+      const blob = new Blob([output], { type: mimeType });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "formatted.json";
+      a.download = `formatted.${extension}`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      toast.success("JSON file downloaded!");
+      toast.success(`${selectedFormat.toUpperCase()} file downloaded!`);
     }
   };
 
@@ -93,29 +142,49 @@ const FormatPage = () => {
     <Layout>
       <NextSeo
         {...SEO}
-        title="JSON Formatter & Beautifier | Meroot Tools"
-        description="Format, beautify and minify JSON data online. Clean up messy JSON with proper indentation and structure."
+        title="JSON & XML Formatter | Tools"
+        description="Format, beautify and minify JSON and XML data online. Clean up messy data with proper indentation and structure."
         canonical="http://localhost:3000/format"
       />
       <Container size="xl" my={40}>
         <Stack gap="xl">
           <Stack gap="md" ta="center">
             <Title order={1} c="dark">
-              JSON Formatter & Beautifier
+              JSON & XML Formatter
             </Title>
             <Text c="dimmed" fz="lg">
-              Format messy JSON data with proper indentation or minify for production use
+              Format messy JSON and XML data with proper indentation or minify for production use
             </Text>
           </Stack>
 
           <Paper shadow="sm" p="xl" radius="md">
             <Stack gap="lg">
+              <Group justify="space-between" align="end">
+                <div>
+                  <Text fw={500} mb="sm">
+                    Input Data
+                  </Text>
+                </div>
+                <Select
+                  label="Format"
+                  value={selectedFormat}
+                  onChange={(value) => {
+                    setSelectedFormat(value || "json");
+                    setInput("");
+                    setOutput("");
+                    setError("");
+                  }}
+                  data={[
+                    { value: "json", label: "JSON" },
+                    { value: "xml", label: "XML" },
+                  ]}
+                  w={120}
+                />
+              </Group>
+              
               <div>
-                <Text fw={500} mb="sm">
-                  Input JSON
-                </Text>
                 <Textarea
-                  placeholder="Paste your messy JSON here..."
+                  placeholder={`Paste your messy ${selectedFormat.toUpperCase()} here...`}
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   minRows={20}
@@ -132,7 +201,7 @@ const FormatPage = () => {
 
               <Group justify="center">
                 <Button
-                  onClick={formatJSON}
+                  onClick={formatData}
                   size="md"
                   radius="md"
                   color="blue"
@@ -141,7 +210,7 @@ const FormatPage = () => {
                   Format & Beautify
                 </Button>
                 <Button
-                  onClick={minifyJSON}
+                  onClick={minifyData}
                   size="md"
                   radius="md"
                   variant="outline"
@@ -184,9 +253,9 @@ const FormatPage = () => {
                             <FaCopy />
                           </ActionIcon>
                         </Tooltip>
-                        <Tooltip label="Download JSON file">
+                        <Tooltip label={`Download ${selectedFormat.toUpperCase()} file`}>
                           <ActionIcon
-                            onClick={downloadJSON}
+                            onClick={downloadFile}
                             variant="subtle"
                             color="green"
                           >
@@ -222,16 +291,19 @@ const FormatPage = () => {
               </Title>
               <Stack gap="sm">
                 <Text>
-                  <strong>1. Paste JSON:</strong> Copy your messy or unformatted JSON data into the input area
+                  <strong>1. Select Format:</strong> Choose between JSON or XML format from the dropdown
                 </Text>
                 <Text>
-                  <strong>2. Format:</strong> Click "Format & Beautify" to add proper indentation and structure
+                  <strong>2. Paste Data:</strong> Copy your messy or unformatted data into the input area
                 </Text>
                 <Text>
-                  <strong>3. Minify:</strong> Click "Minify" to remove all whitespace for production use
+                  <strong>3. Format:</strong> Click "Format & Beautify" to add proper indentation and structure
                 </Text>
                 <Text>
-                  <strong>4. Copy or Download:</strong> Use the copy button or download the formatted JSON file
+                  <strong>4. Minify:</strong> Click "Minify" to remove all whitespace for production use
+                </Text>
+                <Text>
+                  <strong>5. Copy or Download:</strong> Use the copy button or download the formatted file
                 </Text>
               </Stack>
             </Stack>

@@ -92,7 +92,7 @@ export const Section2 = () => {
             Don&apos;t waste time with JSON formatters
           </Title>
           <Text my="md" c="gray.7" fz={16} maw={510}>
-            Format JSON and transform into a readable graph in seconds. Meroot Tools is an open-source
+            Format JSON and transform into a readable graph in seconds. Tools is an open-source
             online tool that helps you visualize and understand data.
           </Text>
           <List

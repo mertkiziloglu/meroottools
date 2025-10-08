@@ -63,7 +63,7 @@ export const Navbar = () => {
       <StyledNavbar>
         <Left>
           <Text component={Link} href="/" fw={600} fz="xl" c="black" td="none">
-            Meroot Tools
+            Tools
           </Text>
         </Left>
         <Center>
@@ -121,7 +121,7 @@ export const Navbar = () => {
             size="md"
             radius="md"
           >
-            Karşılaştırma
+            Diff Tool
           </Button>
         </Center>
         <Right>
@@ -133,7 +133,7 @@ export const Navbar = () => {
             visibleFrom="sm"
             size="md"
           >
-            JSON to Graph
+            Data Visualizer
           </Button>
         </Right>
       </StyledNavbar>

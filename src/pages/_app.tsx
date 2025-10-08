@@ -66,7 +66,7 @@ function JsonCrack({ Component, pageProps }: AppProps) {
     <>
       <NextSeo {...SEO} />
       <SoftwareAppJsonLd
-        name="Meroot Tools"
+        name="Tools"
         price="0"
         priceCurrency="USD"
         type="SoftwareApplication"

@@ -1,7 +1,7 @@
 {
-  "name": "Meroot Tools",
-  "short_name": "Meroot Tools",
-  "description": "Meroot Tools is a tool for visualizing into graphs, analyzing, editing, formatting, querying, transforming and validating JSON, CSV, YAML, XML, and more.",
+  "name": "Tools",
+  "short_name": "Tools",
+  "description": "Tools Data Visualizer for visualizing into graphs, analyzing, editing, formatting, querying, transforming and validating JSON, CSV, YAML, XML, and more.",
   "theme_color": "#36393e",
   "background_color": "#36393e",
   "display": "standalone",

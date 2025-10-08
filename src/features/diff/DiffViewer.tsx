@@ -214,14 +214,14 @@ export const DiffViewer: React.FC<DiffViewerProps> = ({
     <Paper withBorder>
       <Box p="xs" bg="gray.1">
         <Text size="sm" fw={500}>
-          Sadece Değişiklikler - {leftFileName} ↔ {rightFileName}
+          Changes Only - {leftFileName} ↔ {rightFileName}
         </Text>
       </Box>
       <ScrollArea h={500}>
         <Box>
           {changedLines.length === 0 ? (
             <Box p="md" ta="center">
-              <Text c="dimmed">Dosyalar arasında fark bulunamadı</Text>
+              <Text c="dimmed">No differences found between files</Text>
             </Box>
           ) : (
             changedLines.map((line, index) => (

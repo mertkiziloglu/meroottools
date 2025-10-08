@@ -25,7 +25,7 @@ interface FeatureItem {
 
 const features: FeatureItem[] = [
   {
-    title: "JSON Visualizer",
+    title: "Data Visualizer",
     description:
       "Transform your data into interactive graphs or trees as you type. Supports JSON, YAML, CSV, XML, and TOML.",
     icon: <FaBolt size={20} />,
@@ -65,8 +65,8 @@ const features: FeatureItem[] = [
     color: "teal.5",
   },
   {
-    title: "Dosya Karşılaştırma Aracı",
-    description: "Metin ve JSON dosyalarını yan yana karşılaştırın. Farkları vurgulama ve detaylı analiz ile görselleştirin.",
+    title: "File Diff Tool",
+    description: "Compare text and JSON files side-by-side. Visualize differences with highlighting and detailed analysis.",
     icon: <MdCompareArrows size={20} />,
     color: "indigo",
   },

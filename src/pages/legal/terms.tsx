@@ -10,8 +10,8 @@ const Terms = () => {
     <Layout>
       <NextSeo
         {...SEO}
-        title="Terms of Service - Meroot Tools"
-        description="Meroot Tools Terms of Service"
+        title="Terms of Service - Tools"
+        description="Tools Terms of Service"
         canonical="https://jsoncrack.com/legal/terms"
       />
       <Container my={50} size="md" pb="lg">

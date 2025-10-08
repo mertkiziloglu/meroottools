@@ -1,10 +1,10 @@
-# Meroot Tools
+# Tools
 
 A comprehensive data visualization and comparison tool that supports JSON, YAML, CSV, XML, and text files.
 
 ## Features
 
-- **JSON to Graph**: Visualize JSON, YAML, CSV, and XML data as interactive graphs
+- **Data Visualizer**: Visualize JSON, YAML, CSV, and XML data as interactive graphs
 - **Format Converter**: Convert between different data formats (JSON, YAML, XML, CSV)
 - **Type Generator**: Generate TypeScript interfaces, Java classes, and other type definitions
 - **File Diff Tool**: Compare text and JSON files with visual highlighting
@@ -33,7 +33,7 @@ The diff tool allows you to:
 1. Go to the project folder
 
    ```sh
-   cd merootTools
+   cd tools
    ```
 
 2. Install packages
@@ -53,7 +53,7 @@ The diff tool allows you to:
 ### Docker
 
 🐳 A [`Dockerfile`](Dockerfile) is provided in the root of the repository.
-If you want to run Meroot Tools locally:
+If you want to run Tools locally:
 
 ```console
 # Build a Docker image with:
