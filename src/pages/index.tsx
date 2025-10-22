@@ -102,7 +102,7 @@ const HomePage = () => {
               <Stack align="center" gap="md" style={{ flex: 1, justifyContent: 'space-between' }}>
                 <div style={{ textAlign: 'center' }}>
                   <FaPaintBrush size={48} color="#9C88FF" style={{ marginBottom: '1rem' }} />
-                  <Title order={3} size="1.5rem" mb="sm">ingDraw</Title>
+                  <Title order={3} size="1.5rem" mb="sm">Draw</Title>
                   <Text ta="center" c="dimmed" size="sm">
                     Professional drawing and design tool for creating beautiful diagrams and illustrations.
                   </Text>
@@ -118,7 +118,7 @@ const HomePage = () => {
                   fullWidth
                   mt="auto"
                 >
-                  Open ingDraw
+                  Open Draw
                 </Button>
               </Stack>
             </Card>
