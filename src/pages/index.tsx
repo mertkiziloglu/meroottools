@@ -192,13 +192,12 @@ const HomePage = () => {
                 <div style={{ textAlign: 'center' }}>
                   <FaBook size={48} color="#FF6B35" style={{ marginBottom: '1rem' }} />
                   <Title order={3} size="1.5rem" mb="sm">User Guide</Title>
-                  <Text ta="center" c="dimmed" size="sm">
-                    Learn how to use MEROOT tools effectively. Step-by-step tutorials and documentation.
-                  </Text>
                 </div>
                 <Button 
-                  component={Link} 
-                  href="/docs" 
+                  component="a" 
+                  href="https://iknow.domain.bankanet.com.tr" 
+                  target="_blank"
+                  rel="noopener"
                   size="lg" 
                   radius="md"
                   color="orange"
