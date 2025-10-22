@@ -88,7 +88,7 @@ export const Navbar = () => {
             size="md"
             radius="md"
           >
-            IngDraw
+            Draw
           </Button>
           <Button
             component={Link}
