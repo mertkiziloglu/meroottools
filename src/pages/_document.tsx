@@ -35,6 +35,8 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <ColorSchemeScript />
+          {/* Favicon kaldırıldı - logo görünmeyecek */}
+          <link rel="icon" href="data:," />
         </Head>
         <body>
           <Main />

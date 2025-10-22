@@ -19,7 +19,7 @@ const useJsonQuery = () => {
       setContents({ contents: JSON.stringify(res, null, 2) });
       cb?.();
     } catch (error) {
-      console.error(error);
+      // console.error(error); // Production'da devre dışı
       toast.error("Unable to process the request.");
     }
   };

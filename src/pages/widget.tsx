@@ -60,7 +60,7 @@ const WidgetPage = () => {
         setContents({ contents: event.data.json, hasChanges: false });
         setDirection(event.data.options?.direction || "RIGHT");
       } catch (error) {
-        console.error(error);
+        // console.error(error); // Production'da devre dışı
         toast.error("Invalid JSON!");
       }
     };

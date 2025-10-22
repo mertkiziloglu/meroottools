@@ -28,7 +28,7 @@ export const FullscreenDropzone = () => {
           setContents({ contents: fileContent, format: fileExtension, hasChanges: false });
         } catch (err) {
           toast.error("An error occurred while reading the file.");
-          console.error(err);
+          // console.error(err); // Production'da devre dışı
         }
       }}
     >

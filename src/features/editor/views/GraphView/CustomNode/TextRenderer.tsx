@@ -18,16 +18,45 @@ const isURL = (word: string) => {
 };
 
 const Linkify = (text: string) => {
-  const addMarkup = (word: string) => {
-    return isURL(word)
-      ? `<a onclick="event.stopPropagation()" href="${word}" style="text-decoration: underline; pointer-events: all;" target="_blank" rel="noopener noreferrer">${word}</a>`
-      : word;
+  const sanitizeUrl = (url: string) => {
+    // URL sanitization - sadece güvenli protokoller
+    const safeProtocols = ['http:', 'https:'];
+    try {
+      const urlObj = new URL(url);
+      if (!safeProtocols.includes(urlObj.protocol)) {
+        return null;
+      }
+      return urlObj.toString();
+    } catch {
+      return null;
+    }
   };
 
   const words = text.split(" ");
-  const formatedWords = words.map(w => addMarkup(w));
-  const html = formatedWords.join(" ");
-  return <span dangerouslySetInnerHTML={{ __html: html }} />;
+  return (
+    <span>
+      {words.map((word, index) => {
+        if (isURL(word)) {
+          const safeUrl = sanitizeUrl(word);
+          if (safeUrl) {
+            return (
+              <a
+                key={index}
+                href={safeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'underline', pointerEvents: 'all' }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {word}
+              </a>
+            );
+          }
+        }
+        return <span key={index}>{word} </span>;
+      })}
+    </span>
+  );
 };
 
 export const TextRenderer = ({ children }: React.PropsWithChildren) => {

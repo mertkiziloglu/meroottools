@@ -66,7 +66,7 @@ export const SchemaModal = ({ opened, onClose }: ModalProps) => {
       gaEvent("generate_schema_mock_data");
       onClose();
     } catch (error) {
-      console.error(error);
+      // console.error(error); // Production'da devre dışı
       toast.error("Invalid Schema");
     }
   };

@@ -84,7 +84,7 @@ export const TypeModal = ({ opened, onClose }: ModalProps) => {
           transformer({ value: getJson() }).then(setType);
         }
       } catch (error) {
-        console.error(error);
+        // console.error(error); // Production'da devre dışı
       }
     }
   }, [getJson, opened, selectedType, transformer]);

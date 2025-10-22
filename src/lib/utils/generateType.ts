@@ -15,7 +15,7 @@ export const generateType = async (input: string, format: FileFormat, output: Ty
       return run("Root", jsonString, JSON.stringify({ output_mode: output }));
     }
   } catch (error) {
-    console.error(error);
+    // console.error(error); // Production'da devre dışı
     return "";
   }
 };

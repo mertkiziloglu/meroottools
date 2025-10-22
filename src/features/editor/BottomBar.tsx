@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex, Menu, Popover, Text } from "@mantine/core";
 import styled from "styled-components";
-import { event as gaEvent } from "nextjs-google-analytics";
+// import { event as gaEvent } from "nextjs-google-analytics"; // Devre dışı bırakıldı
 import { BiSolidDockLeft } from "react-icons/bi";
 import { IoMdCheckmark } from "react-icons/io";
 import { MdArrowUpward } from "react-icons/md";
@@ -87,7 +87,7 @@ export const BottomBar = () => {
 
   const toggleEditor = () => {
     toggleFullscreen(!fullscreen);
-    gaEvent("toggle_fullscreen");
+    // gaEvent("toggle_fullscreen"); // Devre dışı bırakıldı
   };
 
   React.useEffect(() => {
@@ -125,7 +125,7 @@ export const BottomBar = () => {
         <StyledBottomBarItem
           onClick={() => {
             toggleLiveTransform(!liveTransformEnabled);
-            gaEvent("toggle_live_transform");
+            // gaEvent("toggle_live_transform"); // Devre dışı bırakıldı
           }}
         >
           {liveTransformEnabled ? <VscSync /> : <VscSyncIgnored />}

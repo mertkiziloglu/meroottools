@@ -97,7 +97,8 @@ function JsonCrack({ Component, pageProps }: AppProps) {
             }}
           />
           <GlobalStyle />
-          {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && <GoogleAnalytics trackPageViews />}
+          {/* Google Analytics devre dışı bırakıldı - veri çıkışını engellemek için */}
+          {/* {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && <GoogleAnalytics trackPageViews />} */}
           <Component {...pageProps} />
         </ThemeProvider>
       </MantineProvider>

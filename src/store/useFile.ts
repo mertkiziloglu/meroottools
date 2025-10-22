@@ -1,5 +1,5 @@
 import debounce from "lodash.debounce";
-import { event as gaEvent } from "nextjs-google-analytics";
+// import { event as gaEvent } from "nextjs-google-analytics"; // Devre dışı bırakıldı
 import { toast } from "react-hot-toast";
 import { create } from "zustand";
 import exampleJson from "../data/example.json";
@@ -80,7 +80,7 @@ const useFile = create<FileStates & JsonActions>()((set, get) => ({
   setFile: fileData => {
     set({ fileData, format: fileData.format || FileFormat.JSON });
     get().setContents({ contents: fileData.content, hasChanges: false });
-    gaEvent("set_content", { label: fileData.format });
+    // gaEvent("set_content", { label: fileData.format }); // Devre dışı bırakıldı
   },
   getContents: () => get().contents,
   getFormat: () => get().format,
@@ -96,7 +96,7 @@ const useFile = create<FileStates & JsonActions>()((set, get) => ({
       get().setContents({ contents: jsonContent });
     } catch (error) {
       get().clear();
-      console.warn("The content was unable to be converted, so it was cleared instead.");
+      // console.warn("The content was unable to be converted, so it was cleared instead."); // Production'da devre dışı
     }
   },
   setContents: async ({ contents, hasChanges = true, skipUpdate = false, format }) => {
@@ -114,7 +114,9 @@ const useFile = create<FileStates & JsonActions>()((set, get) => ({
       if (!useConfig.getState().liveTransformEnabled && skipUpdate) return;
 
       if (get().hasChanges && contents && contents.length < 80_000 && !isIframe() && !isFetchURL) {
-        sessionStorage.setItem("content", contents);
+        // Session storage'a veri kaydetmeden önce sanitize et
+        const sanitizedContent = contents.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+        sessionStorage.setItem("content", sanitizedContent);
         sessionStorage.setItem("format", get().format);
         set({ hasChanges: true });
       }
@@ -131,7 +133,44 @@ const useFile = create<FileStates & JsonActions>()((set, get) => ({
   setHasChanges: hasChanges => set({ hasChanges }),
   fetchUrl: async url => {
     try {
-      const res = await fetch(url);
+      // URL güvenlik kontrolü
+      const allowedDomains = [
+        'jsonplaceholder.typicode.com',
+        'api.github.com',
+        'httpbin.org',
+        'reqres.in'
+      ];
+      
+      const urlObj = new URL(url);
+      const isAllowedDomain = allowedDomains.some(domain => 
+        urlObj.hostname === domain || urlObj.hostname.endsWith('.' + domain)
+      );
+      
+      if (!isAllowedDomain) {
+        toast.error("Bu domain'den veri çekmek güvenlik nedeniyle engellenmiştir!");
+        return;
+      }
+      
+      // Sadece HTTPS protokolüne izin ver
+      if (urlObj.protocol !== 'https:') {
+        toast.error("Sadece HTTPS protokolü desteklenmektedir!");
+        return;
+      }
+      
+      const res = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+        },
+        // CORS kontrolü
+        mode: 'cors',
+        credentials: 'omit'
+      });
+      
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+      }
+      
       const json = await res.json();
       const jsonStr = JSON.stringify(json, null, 2);
 
@@ -150,7 +189,10 @@ const useFile = create<FileStates & JsonActions>()((set, get) => ({
     let contents = defaultJson;
     const sessionContent = sessionStorage.getItem("content") as string | null;
     const format = sessionStorage.getItem("format") as FileFormat | null;
-    if (sessionContent && !widget) contents = sessionContent;
+    if (sessionContent && !widget) {
+      // Session storage'dan gelen veriyi sanitize et
+      contents = sessionContent.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+    }
 
     if (format) set({ format });
     get().setContents({ contents, hasChanges: false });

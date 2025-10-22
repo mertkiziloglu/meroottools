@@ -59,7 +59,7 @@ export function smartColorSchemeManager({
       try {
         window.localStorage.setItem(key, value);
       } catch (error) {
-        console.warn("Smart color scheme manager was unable to save color scheme.", error);
+        // console.warn("Smart color scheme manager was unable to save color scheme.", error); // Production'da devre dışı
       }
     },
 

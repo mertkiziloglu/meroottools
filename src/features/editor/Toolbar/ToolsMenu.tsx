@@ -1,7 +1,7 @@
 import React from "react";
 import { Menu, Flex } from "@mantine/core";
 import { JSONSchemaFaker } from "json-schema-faker";
-import { event as gaEvent } from "nextjs-google-analytics";
+// import { event as gaEvent } from "nextjs-google-analytics"; // Devre dışı bırakıldı
 import toast from "react-hot-toast";
 import { CgChevronDown } from "react-icons/cg";
 import { FaRandom } from "react-icons/fa";
@@ -37,9 +37,9 @@ export const ToolsMenu = () => {
       const contents = await jsonToContent(JSON.stringify(randomJson, null, 2), getFormat());
       setContents({ contents });
 
-      gaEvent("randomize_data");
+      // gaEvent("randomize_data"); // Devre dışı bırakıldı
     } catch (error) {
-      console.error(error);
+      // console.error(error); // Production'da devre dışı
       toast.error("Failed to generate mock data");
     }
   };
@@ -47,7 +47,7 @@ export const ToolsMenu = () => {
   return (
     <Menu shadow="md" withArrow>
       <Menu.Target>
-        <StyledToolElement onClick={() => gaEvent("show_tools_menu")}>
+        <StyledToolElement onClick={() => {/* gaEvent("show_tools_menu"); */}}>
           <Flex align="center" gap={3}>
             Tools <CgChevronDown />
           </Flex>
@@ -59,7 +59,7 @@ export const ToolsMenu = () => {
           leftSection={<VscSearchFuzzy />}
           onClick={() => {
             setVisible("JQModal", true);
-            gaEvent("open_jq_modal");
+            // gaEvent("open_jq_modal"); // Devre dışı bırakıldı
           }}
         >
           JSON Query (jq)
@@ -69,7 +69,7 @@ export const ToolsMenu = () => {
           leftSection={<VscJson />}
           onClick={() => {
             setVisible("SchemaModal", true);
-            gaEvent("open_schema_modal");
+            // gaEvent("open_schema_modal"); // Devre dışı bırakıldı
           }}
         >
           JSON Schema
@@ -79,7 +79,7 @@ export const ToolsMenu = () => {
           leftSection={<MdFilterListAlt />}
           onClick={() => {
             setVisible("JPathModal", true);
-            gaEvent("open_json_path_modal");
+            // gaEvent("open_json_path_modal"); // Devre dışı bırakıldı
           }}
         >
           JSON Path
@@ -90,7 +90,7 @@ export const ToolsMenu = () => {
           leftSection={<SiJsonwebtokens />}
           onClick={() => {
             setVisible("JWTModal", true);
-            gaEvent("open_jwt_modal");
+            // gaEvent("open_jwt_modal"); // Devre dışı bırakıldı
           }}
         >
           Decode JWT
@@ -100,7 +100,7 @@ export const ToolsMenu = () => {
           leftSection={<VscGroupByRefType />}
           onClick={() => {
             setVisible("TypeModal", true);
-            gaEvent("open_type_modal");
+            // gaEvent("open_type_modal"); // Devre dışı bırakıldı
           }}
         >
           Generate Type
