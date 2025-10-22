@@ -33,34 +33,6 @@ const HomePage = () => {
             maxWidth: '1200px',
             marginTop: 'var(--mantine-spacing-xl)'
           }}>
-            <Card 
-              shadow="md" 
-              padding="xl" 
-              radius="md" 
-              withBorder
-              style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-            >
-              <Stack align="center" gap="md" style={{ flex: 1, justifyContent: 'space-between' }}>
-                <div style={{ textAlign: 'center' }}>
-                  <FaCode size={48} color="#228BE6" style={{ marginBottom: '1rem' }} />
-                  <Title order={3} size="1.5rem" mb="sm">Data Visualizer</Title>
-                  <Text ta="center" c="dimmed" size="sm">
-                    Visualize and edit your JSON, YAML, CSV, and XML data with our interactive editor.
-                  </Text>
-                </div>
-                <Button 
-                  component={Link} 
-                  href="/editor" 
-                  size="lg" 
-                  radius="md"
-                  color="blue"
-                  fullWidth
-                  mt="auto"
-                >
-                  Open Data Visualizer
-                </Button>
-              </Stack>
-            </Card>
 
             <Card 
               shadow="md" 
@@ -147,6 +119,35 @@ const HomePage = () => {
                   mt="auto"
                 >
                   Open ingDraw
+                </Button>
+              </Stack>
+            </Card>
+
+            <Card 
+              shadow="md" 
+              padding="xl" 
+              radius="md" 
+              withBorder
+              style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+            >
+              <Stack align="center" gap="md" style={{ flex: 1, justifyContent: 'space-between' }}>
+                <div style={{ textAlign: 'center' }}>
+                  <FaCode size={48} color="#228BE6" style={{ marginBottom: '1rem' }} />
+                  <Title order={3} size="1.5rem" mb="sm">Data Visualizer</Title>
+                  <Text ta="center" c="dimmed" size="sm">
+                    Visualize and edit your JSON, YAML, CSV, and XML data with our interactive editor.
+                  </Text>
+                </div>
+                <Button 
+                  component={Link} 
+                  href="/editor" 
+                  size="lg" 
+                  radius="md"
+                  color="blue"
+                  fullWidth
+                  mt="auto"
+                >
+                  Open Data Visualizer
                 </Button>
               </Stack>
             </Card>
