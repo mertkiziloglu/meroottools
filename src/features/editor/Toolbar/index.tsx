@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { AiOutlineFullscreen } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa6";
 import { LuLink } from "react-icons/lu";
-import { JSONCrackLogo } from "../../../layout/JsonCrackLogo";
+import { MerootLogo } from "../../../layout/JsonCrackLogo";
 import { useModal } from "../../../store/useModal";
 import { FileMenu } from "./FileMenu";
 import { ToolsMenu } from "./ToolsMenu";
@@ -50,7 +50,7 @@ export const Toolbar = () => {
       <Group gap="xs" justify="left" w="100%" style={{ flexWrap: "nowrap" }}>
         <StyledToolElement title="MEROOT Visualizer">
           <Flex gap="xs" align="center" justify="center">
-            <JSONCrackLogo fontSize="0.8rem" hideLogo />
+            <MerootLogo fontSize="0.8rem" hideLogo />
           </Flex>
         </StyledToolElement>
         <FileMenu />

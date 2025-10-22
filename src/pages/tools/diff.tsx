@@ -10,7 +10,7 @@ const DiffPage = () => {
       <NextSeo
         {...SEO}
         title="File Diff Tool | Tools"
-        canonical="https://jsoncrack.com/tools/diff"
+        canonical="https://meroot.com/tools/diff"
         description="Compare text and JSON files. Visualize and analyze differences between two different files."
       />
       <DiffTool />

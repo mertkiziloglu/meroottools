@@ -92,7 +92,7 @@ const EditorPage = () => {
         {...SEO}
         title="Data Visualizer | Tools"
         description="Tools Data Visualizer is a tool for visualizing into graphs, analyzing, editing, formatting, querying, transforming and validating JSON, CSV, YAML, XML, and more."
-        canonical="https://jsoncrack.com/editor"
+        canonical="https://meroot.com/editor"
       />
       <ThemeProvider theme={darkmodeEnabled ? darkTheme : lightTheme}>
         <QueryClientProvider client={queryClient}>

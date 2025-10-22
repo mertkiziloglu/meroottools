@@ -52,7 +52,7 @@ const theme = createTheme({
   },
 });
 
-function JsonCrack({ Component, pageProps }: AppProps) {
+function Meroot({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter();
 
   // Create a single smart manager that handles pathname logic internally
@@ -106,4 +106,4 @@ function JsonCrack({ Component, pageProps }: AppProps) {
   );
 }
 
-export default JsonCrack;
+export default Meroot;

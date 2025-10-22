@@ -12,7 +12,7 @@ const HomePage = () => {
       <NextSeo 
         title="Tools - Data Visualization Tool"
         description="Transform your JSON, YAML, CSV, and XML data into interactive visualizations. Convert between formats and generate types."
-        canonical="https://jsoncrack.com" 
+        canonical="https://meroot.com" 
       />
       
       <Container size="lg" py={100}>

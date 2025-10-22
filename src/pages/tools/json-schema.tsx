@@ -52,7 +52,7 @@ const JSONSchemaTool = () => {
         {...SEO}
         title="JSON Schema Validator & Generator"
         description="Use our JSON Schema Validator & Generator tool to easily validate and generate JSON schemas, and generate data from JSON schemas. Simply input your JSON data, generate the corresponding schema, and validate your data with ease."
-        canonical="https://jsoncrack.com/tools/json-schema"
+        canonical="https://meroot.com/tools/json-schema"
       />
       <Container mt="xl" size="xl">
         <Title c="black">JSON Schema Validator & Generator</Title>

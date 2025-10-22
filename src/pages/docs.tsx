@@ -42,7 +42,7 @@ const Docs = () => {
         {...SEO}
         title="Documentation - Tools"
         description="Integrate Tools widgets into your website."
-        canonical="https://jsoncrack.com/docs"
+        canonical="https://meroot.com/docs"
       />
       <Stack mx="auto" maw="90%">
         <Group mb="lg" mt={40}>
@@ -62,10 +62,10 @@ const Docs = () => {
               the editor:{" "}
               <StyledHighlight
                 as="a"
-                href="https://jsoncrack.com/editor?json=https://catfact.ninja/fact"
+                href="https://meroot.com/editor?json=https://catfact.ninja/fact"
                 $link
               >
-                https://jsoncrack.com/editor?json=https://catfact.ninja/fact
+                https://meroot.com/editor?json=https://catfact.ninja/fact
               </StyledHighlight>
             </Text>
 

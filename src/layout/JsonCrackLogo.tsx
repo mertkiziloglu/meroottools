@@ -35,7 +35,7 @@ interface LogoProps extends React.ComponentPropsWithoutRef<"div"> {
   hideText?: boolean;
 }
 
-export const JSONCrackLogo = ({ fontSize = "1.2rem", hideText, hideLogo, ...props }: LogoProps) => {
+export const MerootLogo = ({ fontSize = "1.2rem", hideText, hideLogo, ...props }: LogoProps) => {
   const [isIframe, setIsIframe] = React.useState(false);
 
   useEffect(() => {
