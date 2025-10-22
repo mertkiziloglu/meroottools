@@ -40,45 +40,119 @@ const Docs = () => {
     <Layout>
       <NextSeo
         {...SEO}
-        title="Documentation - Tools"
-        description="Integrate Tools widgets into your website."
+        title="User Guide - MEROOT Tools"
+        description="Complete user guide for MEROOT data visualization and conversion tools."
         canonical="https://meroot.com/docs"
       />
       <Stack mx="auto" maw="90%">
         <Group mb="lg" mt={40}>
           <Title order={1} c="dark">
-            Embed
+            MEROOT User Guide
           </Title>
         </Group>
         <Paper bg="white" c="black" p="md" radius="md" withBorder>
           <Title mb="sm" order={3} c="dark">
-            # Fetching from URL
+            # Getting Started with MEROOT
           </Title>
-          <StyledContentBody>
-            <Text>
-              By adding <StyledHighlight>?json=https://catfact.ninja/fact</StyledHighlight> query at
-              the end of iframe src you will be able to fetch from URL at widgets without additional
-              scripts. This applies to editor page as well, the following link will fetch the url at
-              the editor:{" "}
-              <StyledHighlight
-                as="a"
-                href="https://meroot.com/editor?json=https://catfact.ninja/fact"
-                $link
-              >
-                https://meroot.com/editor?json=https://catfact.ninja/fact
-              </StyledHighlight>
-            </Text>
+          <Text mb="sm" c="gray.7">
+            Welcome to MEROOT! This comprehensive guide will help you get started with our data visualization and conversion tools.
+          </Text>
 
-            <StyledFrame
-              title="Untitled"
-              src="https://codepen.io/mertkiziloglu/embed/KKBpWVR?default-tab=html%2Cresult"
-              loading="eager"
-            >
-              See the Pen <a href="https://codepen.io/mertkiziloglu/pen/KKBpWVR">Untitled</a> by Mert
-              Kiziloglu (<a href="https://codepen.io/mertkiziloglu">@mertkiziloglu</a>) on{" "}
-              <a href="https://codepen.io">CodePen</a>.
-            </StyledFrame>
-          </StyledContentBody>
+          <Title mb="sm" order={4} c="dark">
+            ## Data Visualizer
+          </Title>
+          <Text mb="sm" c="gray.7">
+            The Data Visualizer is our main tool for visualizing JSON, YAML, CSV, and XML data as interactive graphs.
+          </Text>
+          <Text mb="sm" c="gray.7">
+            <strong>How to use:</strong>
+          </Text>
+          <ul style={{ paddingLeft: '20px' }}>
+            <li>Paste your data directly into the editor</li>
+            <li>Upload a file using the file menu</li>
+            <li>Fetch data from a URL</li>
+            <li>Use the toolbar to format, validate, and transform your data</li>
+          </ul>
+
+          <Title mb="sm" order={4} c="dark">
+            ## File Comparison Tool
+          </Title>
+          <Text mb="sm" c="gray.7">
+            Compare two text or JSON files side-by-side with visual highlighting of differences.
+          </Text>
+          <Text mb="sm" c="gray.7">
+            <strong>Features:</strong>
+          </Text>
+          <ul style={{ paddingLeft: '20px' }}>
+            <li>Side-by-side comparison view</li>
+            <li>Unified diff view</li>
+            <li>Split view for better analysis</li>
+            <li>Automatic file type detection</li>
+          </ul>
+
+          <Title mb="sm" order={4} c="dark">
+            ## Data Converters
+          </Title>
+          <Text mb="sm" c="gray.7">
+            Convert between different data formats seamlessly.
+          </Text>
+          <Text mb="sm" c="gray.7">
+            <strong>Supported formats:</strong> JSON, YAML, CSV, XML
+          </Text>
+
+          <Title mb="sm" order={4} c="dark">
+            ## Type Generators
+          </Title>
+          <Text mb="sm" c="gray.7">
+            Generate TypeScript interfaces, Java classes, and other type definitions from your data.
+          </Text>
+
+          <Title mb="sm" order={4} c="dark">
+            ## Keyboard Shortcuts
+          </Title>
+          <Text mb="sm" c="gray.7">
+            <strong>Editor shortcuts:</strong>
+          </Text>
+          <ul style={{ paddingLeft: '20px' }}>
+            <li><kbd>Ctrl/Cmd + S</kbd> - Save file</li>
+            <li><kbd>Ctrl/Cmd + F</kbd> - Search</li>
+            <li><kbd>Ctrl/Cmd + Z</kbd> - Undo</li>
+            <li><kbd>Ctrl/Cmd + Y</kbd> - Redo</li>
+            <li><kbd>F11</kbd> - Toggle fullscreen</li>
+          </ul>
+
+          <Title mb="sm" order={4} c="dark">
+            ## Tips & Best Practices
+          </Title>
+          <Text mb="sm" c="gray.7">
+            <strong>For better performance:</strong>
+          </Text>
+          <ul style={{ paddingLeft: '20px' }}>
+            <li>Keep your data files under 80,000 characters for optimal performance</li>
+            <li>Use the live transform feature for real-time updates</li>
+            <li>Save your work frequently using the file menu</li>
+            <li>Use the search feature to quickly find specific data</li>
+          </ul>
+
+          <Title mb="sm" order={4} c="dark">
+            ## Troubleshooting
+          </Title>
+          <Text mb="sm" c="gray.7">
+            <strong>Common issues:</strong>
+          </Text>
+          <ul style={{ paddingLeft: '20px' }}>
+            <li>Invalid JSON format - Check for syntax errors</li>
+            <li>Large files - Consider breaking into smaller chunks</li>
+            <li>Network issues - Ensure stable internet connection for URL fetching</li>
+            <li>Browser compatibility - Use modern browsers for best experience</li>
+          </ul>
+
+          <Title mb="sm" order={4} c="dark">
+            ## Support
+          </Title>
+          <Text mb="sm" c="gray.7">
+            Need help? Contact us at <strong>mert.kiziloglu@ing.com.tr</strong> for support and bug reports.
+          </Text>
         </Paper>
         <Paper bg="white" c="black" p="md" radius="md" withBorder>
           <Title mb="sm" order={3} c="dark">

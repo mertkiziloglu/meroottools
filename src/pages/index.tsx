@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { NextSeo } from "next-seo";
 import { Container, Stack, Title, Text, Button, Group, Card } from "@mantine/core";
-import { FaCode, FaExchangeAlt, FaCogs, FaPaintBrush } from "react-icons/fa";
+import { FaCode, FaExchangeAlt, FaCogs, FaPaintBrush, FaBook } from "react-icons/fa";
 import { MdCompareArrows } from "react-icons/md";
 import Layout from "../layout/PageLayout";
 
@@ -177,6 +177,35 @@ const HomePage = () => {
                   mt="auto"
                 >
                   Open Diff Tool
+                </Button>
+              </Stack>
+            </Card>
+
+            <Card 
+              shadow="md" 
+              padding="xl" 
+              radius="md" 
+              withBorder
+              style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+            >
+              <Stack align="center" gap="md" style={{ flex: 1, justifyContent: 'space-between' }}>
+                <div style={{ textAlign: 'center' }}>
+                  <FaBook size={48} color="#FF6B35" style={{ marginBottom: '1rem' }} />
+                  <Title order={3} size="1.5rem" mb="sm">User Guide</Title>
+                  <Text ta="center" c="dimmed" size="sm">
+                    Learn how to use MEROOT tools effectively. Step-by-step tutorials and documentation.
+                  </Text>
+                </div>
+                <Button 
+                  component={Link} 
+                  href="/docs" 
+                  size="lg" 
+                  radius="md"
+                  color="orange"
+                  fullWidth
+                  mt="auto"
+                >
+                  View User Guide
                 </Button>
               </Stack>
             </Card>
